@@ -1,0 +1,336 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: 'Courier New', 'Monaco', 'Monospace', 'Segoe UI', monospace;
+  background: linear-gradient(135deg, #0a0e1a 0%, #0f1622 100%);
+  min-height: 100vh;
+}
+
+h1 {
+  color: #00ff9d;
+  margin-bottom: 30px;
+  text-align: center;
+  font-size: 28px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  text-shadow: 0 0 10px rgba(0, 255, 157, 0.5);
+  border-bottom: 2px solid #00ff9d;
+  display: inline-block;
+  width: auto;
+  padding-bottom: 10px;
+}
+
+
+
+h2 {
+  color: #ff6b35;
+  margin-bottom: 20px;
+  font-size: 20px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  border-left: 4px solid #ff6b35;
+  padding-left: 15px;
+}
+
+/* KPI Styles - Style Cockpit */
+.kpi-container {
+  display: flex;
+  gap: 25px;
+  margin-bottom: 40px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.kpi-card {
+  background: linear-gradient(135deg, rgba(0, 30, 60, 0.9) 0%, rgba(0, 10, 30, 0.95) 100%);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 255, 157, 0.3);
+  color: #00ff9d;
+  padding: 25px;
+  border-radius: 15px;
+  text-align: center;
+  min-width: 220px;
+  box-shadow: 0 0 20px rgba(0, 255, 157, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.kpi-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(0, 255, 157, 0.1), transparent);
+  transition: left 0.5s;
+}
+
+.kpi-card:hover::before {
+  left: 100%;
+}
+
+.kpi-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 30px rgba(0, 255, 157, 0.2);
+  border-color: rgba(0, 255, 157, 0.6);
+}
+
+.kpi-card:first-child {
+  border-color: rgba(0, 255, 157, 0.5);
+}
+
+.kpi-card:first-child .kpi-title {
+  color: #00ff9d;
+}
+
+.kpi-card:last-child {
+  border-color: rgba(255, 107, 53, 0.5);
+}
+
+.kpi-card:last-child .kpi-title {
+  color: #ff6b35;
+}
+
+.kpi-card:last-child .kpi-value {
+  color: #ff6b35;
+  text-shadow: 0 0 10px rgba(255, 107, 53, 0.5);
+}
+
+.kpi-title {
+  font-size: 14px;
+  margin-bottom: 15px;
+  letter-spacing: 2px;
+  font-weight: bold;
+  text-transform: uppercase;
+  opacity: 0.9;
+}
+
+.kpi-value {
+  font-size: 42px;
+  font-weight: bold;
+  font-family: 'Monaco', 'Courier New', monospace;
+  text-shadow: 0 0 5px currentColor;
+}
+
+.anomaly-count {
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+/* Table Styles - Style Cockpit */
+.table-container {
+  background: rgba(10, 20, 30, 0.8);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  overflow-x: auto;
+  border: 1px solid rgba(0, 255, 157, 0.2);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+thead {
+  background: linear-gradient(135deg, rgba(0, 40, 60, 0.9) 0%, rgba(0, 20, 40, 0.95) 100%);
+  border-bottom: 2px solid #00ff9d;
+}
+
+th {
+  padding: 18px 15px;
+  text-align: left;
+  font-weight: 600;
+  color: #00ff9d;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-size: 13px;
+  font-family: 'Monaco', 'Courier New', monospace;
+  border-right: 1px solid rgba(0, 255, 157, 0.1);
+}
+
+th:last-child {
+  border-right: none;
+}
+
+td {
+  padding: 15px;
+  color: #b8e6ff;
+  border-bottom: 1px solid rgba(0, 255, 157, 0.1);
+  font-family: 'Courier New', monospace;
+  font-size: 14px;
+}
+
+tr {
+  transition: all 0.3s ease;
+}
+
+tr:hover {
+  background: rgba(0, 255, 157, 0.05);
+  transform: scale(1.01);
+}
+
+tr:hover td {
+  color: #00ff9d;
+}
+
+.status-badge {
+  padding: 6px 15px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: bold;
+  text-transform: uppercase;
+  display: inline-block;
+  letter-spacing: 1px;
+  font-family: 'Monaco', 'Courier New', monospace;
+  position: relative;
+  backdrop-filter: blur(5px);
+}
+
+.status-ok {
+  background: rgba(0, 255, 100, 0.1);
+  color: #00ff9d;
+  border: 1px solid #00ff9d;
+  box-shadow: 0 0 5px rgba(0, 255, 157, 0.3);
+}
+
+.status-warning {
+  background: rgba(255, 165, 0, 0.1);
+  color: #ffa500;
+  border: 1px solid #ffa500;
+  box-shadow: 0 0 5px rgba(255, 165, 0, 0.3);
+}
+
+.status-anomaly {
+  background: rgba(255, 50, 50, 0.1);
+  color: #ff3333;
+  border: 1px solid #ff3333;
+  box-shadow: 0 0 5px rgba(255, 51, 51, 0.3);
+  animation: alertPulse 2s ease-in-out infinite;
+}
+
+/* Animations */
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    text-shadow: 0 0 5px currentColor;
+  }
+  50% {
+    transform: scale(1.05);
+    text-shadow: 0 0 20px currentColor;
+  }
+}
+
+@keyframes alertPulse {
+  0%, 100% {
+    opacity: 1;
+    box-shadow: 0 0 5px rgba(255, 51, 51, 0.3);
+  }
+  50% {
+    opacity: 0.8;
+    box-shadow: 0 0 15px rgba(255, 51, 51, 0.6);
+  }
+}
+
+/* Scrollbar Style Cockpit */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 20, 40, 0.9);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #00ff9d;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #ff6b35;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .kpi-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+  
+  .kpi-card {
+    min-width: 90%;
+    padding: 20px;
+  }
+  
+  .kpi-value {
+    font-size: 32px;
+  }
+  
+  th, td {
+    padding: 10px 8px;
+    font-size: 11px;
+  }
+  
+  .container {
+    padding: 15px;
+  }
+  
+  h1 {
+    font-size: 20px;
+  }
+  
+  h2 {
+    font-size: 16px;
+  }
+  
+  .status-badge {
+    padding: 4px 10px;
+    font-size: 9px;
+  }
+}
+
+/* Effet de grille en arrière-plan */
+.container::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    linear-gradient(rgba(0, 255, 157, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 255, 157, 0.03) 1px, transparent 1px);
+  background-size: 30px 30px;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.kpi-card::after {
+  content: "●";
+  position: absolute;
+  bottom: 10px;
+  right: 15px;
+  font-size: 8px;
+  opacity: 0.5;
+  animation: blink 2s infinite;
+}
+
+@keyframes blink {
+  0%, 100% {
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 1;
+  }
+}
